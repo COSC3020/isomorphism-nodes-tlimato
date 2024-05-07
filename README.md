@@ -10,20 +10,25 @@ $G_1=(V_1 , E_1)$ is isomorphic to $G_2 = (V_2, E_2)$ if there exists a
 one-to-one and onto function (bijection) $f: V_1 \rightarrow V_2$ such that $(u,v)
 \in E_1$ iff $(f(u),f(v)) \in E_2$.
 
-Proof w/ Markdown Notation:
-----------------------------
-# Case 1: Two Isomorphic Graphs A & B are fully connected.
-This is trivially true; as two isomorphic graphs $A$ and $B$ are fully connected and retain isomorphism {Definition of Isomorphism}
 
-# Case 2: At least A or B is not fully connected, given A and B are Isomorphic Graphs.
-Let's assume $A$ is not fully connected. Since A & B are isomorphic, there exists a bijection $f: V(A) \rightarrow V(B)$ such that $(u,v) \in E(A)$ if and only if $(f(u),f(v)) \in E(B)$. {Definition of Isomorphism}. 
-The function $f$ is a bijection, meaning it is both injective (one-to-one) and onto. This ensures that each vertice in $A$ maps to a unique vertex in $B$ and covers all vertices in $B$. Furthermore, for any two vertices $u$ and $v$ in $A$, if $(u, v) \in E(A)$, then $(f(u), f(v))$ must be in $(E(B)$. Conversely, if $(u, v) \notin E(A)$, then $(f(u), f(v))$ must not be in $E(B)$. This preservation of adjacency and non-adjacency confirms the isomorphism.
+Proof w/ Mathematical Notation
+-------------------------------
+for this proof, I will be using proof by contradiction.
 
-As $A$ is not fully connected, there exists at least one pair of vertices $(u,v) \in V(A)$ such that $(u,v) \notin E(A)$, meaning they have no adjacency and thus are not connected. Therefore, their corresponding vertices $f(u), f(v) \in V(B)$ must also satisfy $(f(u), f(v)) \notin E(B)$ as the bijection $f$ preserves said relation.
+# Case 1: let $A$ & $B$ be two graphs with $m$ and $n$ number of vertices/nodes respectively, where $m = n$.
+trivial. Refer to "isomorphism-connectivity-tlimato" which proves this case more explicitly with a focus on connectivity.
 
-Subsequently, $B$ is not fully connected as it contains at least one set of vertices, preserved by the bijection $f$, such that $f(u), f(v) \in V(B)$ AND $(f(u), f(v)) \notin E(B)$. {Definition of Isomorphism} {Definition of fully connected}
+# Case 2: let A & B be two graphs with m & n number of vertices/nodes respectively, where $m \neq n$.
+let's assume A & B are isomorphic.
 
+By definition of isomorphism, there must exist a bijection $f: V_1 \rightarrow V_2$ such that $(u,v)
+\in E_1$ if $(f(u),f(v)) \in E_2$. This bijection applies for all arbitrary u & v, with their corresponding f(u) & f(v) as outlined by the one-to-one and onto properties of a bijection.
+
+However, if $m \neq n$, then $|V_1| \neq |V_2|$ meaning, the cardinality of A and B are not equivalent.
+
+Furthermore, a bijection $f: V_1 \rightarrow V_2$ requires that $|V_1| = |V_2|$, given f is a function that is **both** one-to-one and onto.
+
+**Contradiction**. For two graphs A and B to be Isomorphic there must exist a valid bijection between A and B, which is absent when $|V_1| \neq |V_2|$.
 
 # Conclusion:
-"Case 1" proves trivially that two fully connected graphs that are isomorphic retain said isomorphism. "Case 2" demonstrates that if one of the isomorphic graphs $A$ or $B$ is not fully connected, then the other must also be not fully connected due to the preservation of adjacency and non-adjacency by the bijection $f$. Therefore, the isomorphism between two graphs does NOT imply that they must be fully connected; it only requires that the connectivity pattern (what is connected to what) is preserved.
-
+Based upon "Case 1" and "Case 2", we can conclude two graphs A & B with a different number of vertices/nodes ( $n \neq n$ ) cannot be isomorphic
